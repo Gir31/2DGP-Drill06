@@ -28,7 +28,10 @@ def character_move_animation(p1, p2):
         t = i / 100
         x = (1 - t) * x1 + t * x2
         y = (1 - t) * y1 + t * y2
-        character.clip_draw(frame * 100, 0, 100, 100, x, y)
+        if x2 > x1 :
+            character.clip_draw(frame * 100, 0, 100, 100, x, y)
+        else:
+            character.clip_composite_draw(frame*100, 0, 100, 100, 0, 'h', x, y, 100, 100)
         update_canvas()
         frame = (frame + 1) % 8
         delay(0.05)
