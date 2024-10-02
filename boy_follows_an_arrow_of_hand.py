@@ -22,6 +22,7 @@ def character_move_animation(p1, p2):
 
     for i in range(0, 100 + 1, 4):
         clear_canvas()
+        point.draw(x2, y2)
         t = i / 100
         x = (1 - t) * x1 + t * x2
         y = (1 - t) * y1 + t * y2
