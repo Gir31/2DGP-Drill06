@@ -5,6 +5,18 @@ open_canvas()
 character = load_image('run_animation.png')
 point = load_image('hand_arrow.png')
 TUK = load_image('TUK_GROUND.png')
+running = True
+
+def handle_events():
+    global running
+
+    events = get_events()
+
+    for event in events:
+        if event.type == SDL_QUIT:
+            running = False
+        elif event.type == SDL_KEYDOWN and event.key == SDLK_ESCAPE:
+            running = False
 
 def random_locate():
     global base_x, base_y, des_x, des_y
@@ -33,15 +45,15 @@ def character_move_animation(p1, p2):
         else:
             character.clip_composite_draw(frame*100, 0, 100, 100, 0, 'h', x, y, 100, 100)
         update_canvas()
+        handle_events()
         frame = (frame + 1) % 8
         delay(0.05)
 
     pass
 
-base_x, base_y, des_x, des_y = 0, 0, 0, 0
+base_x, base_y, des_x, des_y = 400, 300, 400, 300
 
-while True:
-
+while running:
     character_move_animation((base_x, base_y), (des_x, des_y))
 
 close_canvas()
