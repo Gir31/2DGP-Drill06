@@ -8,8 +8,15 @@ def random_locate():
 
     x, y = random.randint(0, 800), random.randint(0, 600)
 
-x, y = 0, 0
-random_locate()
-print(x, y)
+character = load_image('run_animation.png')
+x, y, frame = 0, 0, 0
+
+while True:
+    clear_canvas()
+    random_locate()
+    character.clip_draw(frame*100, 0, 100, 100, x, y)
+    update_canvas()
+    frame = (frame + 1) % 8
+    delay(0.5)
 
 close_canvas()
