@@ -6,6 +6,7 @@ character = load_image('run_animation.png')
 point = load_image('hand_arrow.png')
 TUK = load_image('TUK_GROUND.png')
 running = True
+base_x, base_y, des_x, des_y = 400, 300, 400, 300
 
 def handle_events():
     global running
@@ -30,7 +31,6 @@ def character_move_animation(p1, p2):
     x1, y1 = p1[0], p1[1]
     x2, y2 = p2[0], p2[1]
     frame = 0
-
     random_locate()
 
     for i in range(0, 100 + 1, 4):
@@ -50,8 +50,6 @@ def character_move_animation(p1, p2):
         delay(0.05)
 
     pass
-
-base_x, base_y, des_x, des_y = 400, 300, 400, 300
 
 while running:
     character_move_animation((base_x, base_y), (des_x, des_y))
